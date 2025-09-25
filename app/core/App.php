@@ -7,7 +7,7 @@ class App {
 
   private function spiltURL() {
     $URL = $_GET['url'] ?? 'home';
-    $URL = explode("/", $URL);
+    $URL = explode("/", trim($URL, "/"));
     return $URL;
   }
 
@@ -18,6 +18,7 @@ class App {
     if(file_exists($filename)) {
       require $filename;
       $this->controller = ucfirst($URL[0]);
+      unset($URL[0]);
     }else {
       $filename = '../app/controllers/_404.php';
       require $filename;
@@ -25,7 +26,14 @@ class App {
     }
 
     $controller = new $this->controller();
-    call_user_func_array([$controller, $this->method], ['a' => 'something', 'b' => 'bsomething']);
+
+    // select method
+    if(!empty($URL[1]) && method_exists($controller, $URL[1])) {
+      $this->method = $URL[1];
+      unset($URL[1]);
+    }
+
+    call_user_func_array([$controller, $this->method], [$URL]);
   }
 
 }

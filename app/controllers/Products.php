@@ -1,10 +1,11 @@
 <?php
 
-class Products extends Controller {
+class Products {
+
+  use Controller;
 
   public function index($a = '', $b = '', $c = '') {
     echo "This is the Products Controller";
-    $this->view('home');
   }
 
 }

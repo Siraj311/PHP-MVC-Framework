@@ -4,7 +4,7 @@
  * Trait cannot be instantiated like classes, can use multiple Traits inside a class
  */
 
-Trait Database {
+trait Database {
 
   private function connect() {
     $string = "mysql:hostname=".DBHOST.";dbname=".DBNAME;

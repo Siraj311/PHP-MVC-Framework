@@ -6,7 +6,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost') {
   define('DBHOST', 'localhost');
   define('DBNAME', 'mvc_db');
   define('DBUSER', 'root');
-  define('DBPASS', 'Siraj1234!');
+  define('DBPASS', '');
   define('DBDRIVER', '');
   
   define('ROOT', 'http://localhost/PHP-MVC/public');
